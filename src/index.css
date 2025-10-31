@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ========================================
+       SIMPLIFIED COLOR SYSTEM - LIGHT MODE (6 colors)
+       ======================================== */
+    --app-bg: 220 18% 97%;          /* #F5F7FA - Main background (very light blue-gray) */
+    --app-surface: 0 0% 100%;       /* #FFFFFF - Cards, panels (white) */
+    --app-primary: 262 83% 58%;     /* #7C3AED - Primary brand (purple) */
+    --app-text: 220 13% 26%;        /* #3B4556 - Main text (dark gray) */
+    --app-border: 220 13% 91%;      /* #E5E7EB - Borders (light gray) */
+    --app-accent: 221 83% 53%;      /* #2563EB - Accents (blue) */
+    
+    /* Extended theme variables - LIGHT MODE */
+    --app-disabled: 215 16% 47%;    /* #64748B - Disabled text */
+    --app-disabled-bg: 210 20% 98%; /* #F8FAFC - Disabled background */
+    --app-success: 142 71% 45%;     /* #16A34A - Success green */
+    --app-warning: 38 92% 50%;      /* #F59E0B - Warning orange */
+    --app-error: 0 72% 51%;         /* #DC2626 - Error red */
+    --app-info: 199 89% 48%;        /* #0284C7 - Info blue */
+    --app-card-bg: 0 0% 100%;       /* #FFFFFF - Card background */
+    --app-input-bg: 0 0% 100%;      /* #FFFFFF - Input background */
+    --app-input-border-hover: 215 20% 65%; /* #94A3B8 - Input border hover */
+    
+    /* Font settings */
+    --base-font-size: 16px;
+    --font-family: 'Tajawal', sans-serif;
+  }
+  
+  .dark {
+    /* ========================================
+       SIMPLIFIED COLOR SYSTEM - DARK MODE (6 colors)
+       ======================================== */
+    --app-bg: 222 47% 11%;          /* #0F172A - Main background (very dark blue) */
+    --app-surface: 217 33% 17%;     /* #1E293B - Cards, panels (dark blue-gray) */
+    --app-primary: 262 83% 70%;     /* #A78BFA - Primary brand (light purple) */
+    --app-text: 210 20% 82%;        /* #CBD5E1 - Main text (light gray) */
+    --app-border: 217 19% 27%;      /* #334155 - Borders (medium gray) */
+    --app-accent: 217 91% 60%;      /* #3B82F6 - Accents (bright blue) */
+    
+    /* Extended theme variables - DARK MODE */
+    --app-disabled: 215 16% 47%;    /* #64748B - Disabled text */
+    --app-disabled-bg: 217 19% 27%; /* #334155 - Disabled background */
+    --app-success: 142 71% 45%;     /* #22C55E - Success green */
+    --app-warning: 45 93% 47%;      /* #EAB308 - Warning yellow */
+    --app-error: 0 84% 60%;         /* #EF4444 - Error red */
+    --app-info: 199 89% 48%;        /* #38BDF8 - Info cyan */
+    --app-card-bg: 217 33% 17%;     /* #1E293B - Card background */
+    --app-input-bg: 222 47% 11%;    /* #0F172A - Input background */
+    --app-input-border-hover: 217 19% 27%; /* #334155 - Input border hover */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    font-size: var(--base-font-size);
+    font-family: var(--font-family);
+  }
+  
+  body {
+    background-color: hsl(var(--app-bg));
+    color: hsl(var(--app-text));
+    font-family: var(--font-family);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: hsl(var(--app-text));
+    font-weight: 700;
+  }
+  
+  a {
+    color: hsl(var(--app-primary));
+  }
+  
+  a:hover {
+    color: hsl(var(--app-accent));
+  }
+}
+
+/* Custom utility classes for theme variables */
+@layer utilities {
+  .bg-theme-primary {
+    background-color: hsl(var(--app-bg));
+  }
+  
+  .bg-theme-secondary {
+    background-color: hsl(var(--app-surface));
+  }
+  
+  .text-theme {
+    color: hsl(var(--app-text));
+  }
+  
+  .text-theme-heading {
+    color: hsl(var(--app-text));
+  }
+  
+  .border-theme-border {
+    border-color: hsl(var(--app-border));
+  }
+  
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--app-surface));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--app-border));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--app-primary));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ===== RECARS DESIGN SYSTEM - REUSABLE CLASSES ===== */
+
+@layer components {
+  /* Container */
+  .recars-container {
+    @apply max-w-[1920px] mx-auto px-3 sm:px-4 lg:px-6;
+  }
+
+  /* Section Padding */
+  .recars-section {
+    @apply py-3 sm:py-4;
+  }
+
+  /* Card Styles */
+  .recars-card {
+    @apply bg-white rounded-xl shadow-sm hover:shadow-md transition-all;
+  }
+
+  .recars-card-padding {
+    @apply p-3 sm:p-4;
+  }
+
+  /* Button Styles */
+  .recars-btn-primary {
+    @apply bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-lg transition-all;
+  }
+
+  .recars-btn-primary-sm {
+    @apply recars-btn-primary h-8 px-4 text-xs;
+  }
+
+  .recars-btn-primary-md {
+    @apply recars-btn-primary h-9 px-5 text-sm;
+  }
+
+  .recars-btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-gray-900 font-semibold border border-gray-200 rounded-lg transition-all;
+  }
+
+  .recars-btn-outline {
+    @apply border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white font-semibold rounded-lg transition-all;
+  }
+
+  .recars-btn-outline-sm {
+    @apply recars-btn-outline h-8 px-4 text-xs;
+  }
+
+  .recars-btn-accent {
+    @apply bg-orange-400 hover:bg-orange-500 text-white font-semibold rounded-lg transition-all;
+  }
+
+  /* Input Styles */
+  .recars-input {
+    @apply border border-gray-200 rounded-lg focus:border-gray-900 focus:ring-gray-900 transition-all;
+  }
+
+  .recars-input-sm {
+    @apply recars-input h-8 px-3 text-xs;
+  }
+
+  .recars-input-md {
+    @apply recars-input h-9 px-4 text-sm;
+  }
+
+  /* Badge Styles */
+  .recars-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .recars-badge-default {
+    @apply recars-badge bg-gray-100 text-gray-900;
+  }
+
+  .recars-badge-accent {
+    @apply recars-badge bg-orange-100 text-orange-600;
+  }
+
+  .recars-badge-success {
+    @apply recars-badge bg-green-100 text-green-600;
+  }
+
+  /* Typography */
+  .recars-heading-1 {
+    @apply text-2xl sm:text-3xl font-bold text-gray-900;
+  }
+
+  .recars-heading-2 {
+    @apply text-xl sm:text-2xl font-bold text-gray-900;
+  }
+
+  .recars-heading-3 {
+    @apply text-lg sm:text-xl font-bold text-gray-900;
+  }
+
+  .recars-heading-4 {
+    @apply text-base sm:text-lg font-semibold text-gray-900;
+  }
+
+  .recars-text-primary {
+    @apply text-gray-900;
+  }
+
+  .recars-text-secondary {
+    @apply text-gray-600;
+  }
+
+  .recars-text-muted {
+    @apply text-gray-500;
+  }
+
+  .recars-text-light {
+    @apply text-gray-400;
+  }
+
+  /* Layout Helpers */
+  .recars-flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .recars-flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .recars-flex-start {
+    @apply flex items-center justify-start;
+  }
+
+  .recars-flex-end {
+    @apply flex items-center justify-end;
+  }
+
+  /* Grid Layouts */
+  .recars-grid-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2;
+  }
+
+  .recars-grid-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .recars-grid-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  /* Transitions */
+  .recars-transition {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .recars-transition-fast {
+    @apply transition-all duration-150 ease-in-out;
+  }
+
+  .recars-transition-slow {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Condition Badges */
+  .recars-condition-excellent {
+    @apply text-green-600 border-green-600 bg-green-50;
+  }
+
+  .recars-condition-good {
+    @apply text-blue-600 border-blue-600 bg-blue-50;
+  }
+
+  .recars-condition-new {
+    @apply text-purple-600 border-purple-600 bg-purple-50;
+  }
+
+  /* Spacing Utilities */
+  .recars-gap-xs {
+    @apply gap-1.5;
+  }
+
+  .recars-gap-sm {
+    @apply gap-2;
+  }
+
+  .recars-gap-md {
+    @apply gap-3;
+  }
+
+  .recars-gap-lg {
+    @apply gap-4;
+  }
+}
